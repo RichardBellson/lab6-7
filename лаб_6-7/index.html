@@ -1,0 +1,349 @@
+<!doctype html>
+<head>
+    <meta charset="utf-8">
+</head>
+<body>
+<script type="text/javascript">
+
+    /*Практическое задание 1*/
+    console.log('Практическое задание 1');
+    /*1:*/
+    console.log("№1:");
+
+    function degreeFunction(celsius) {
+        console.log("По Фаренгейту: " + (9 / 5) * celsius + 32)
+    }
+
+    console.log("По Цельсия: " + 36);
+    degreeFunction(36);
+    /*2:*/
+    console.log("№2:");
+    let name = 'Василий';
+    let admin = name;
+    console.log(admin);
+    /*3:*/
+    console.log("№3:");
+    console.log(10 + 10 + "10"); //2010
+    console.log(10 + "10" + 10); //101010
+    console.log(10 + 10 + +"10"); //30
+    console.log(10 / -""); // -Infinity
+    console.log(10 / +"2,5"); //NaN
+    /*Практическое задание 2*/
+    console.log('Практическое задание 2');
+
+    /*2:*/
+    let a2 = 2;
+    let x2 = 1 + (a2 *= 2);
+    console.log("№2: " + x2); //5
+    /*3:*/
+    console.log("№3:");
+
+    function result(a, b) {
+        if (a >= 0 && b >= 0) {
+            console.log(a - b);
+        } else if (a < 0 && b < 0) {
+            console.log(a * b);
+        } else {
+            console.log(a + b);
+        }
+    }
+
+    result(8, -6);
+
+    /*4:*/
+    function add(a, b) {
+        console.log(a + b)
+    }
+
+    function sub(a, b) {
+        console.log(a - b)
+    }
+
+    function div(a, b) {
+        console.log(a / b)
+    }
+
+    function mul(a, b) {
+        console.log(a * b)
+    }
+
+    /*5:*/
+    console.log('№5');
+
+    function mathOperation(arg1, arg2, operation) {
+        switch (operation) {
+            case 'сложение':
+                return add(arg1, arg2);
+            case 'вычитание':
+                return sub(arg1, arg2);
+            case 'умножение':
+                return mul(arg1, arg2);
+            case 'деление':
+                return div(arg1, arg2);
+        }
+    }
+
+    mathOperation(2, 3, "вычитание");
+    /*6:*/
+    console.log('№6');
+    let val = 2;
+    let pow = 3;
+
+    function power(val, pow) {
+        console.log((pow === 1) ? val : (val * Math.pow(val, pow - 1)));
+    }
+
+    power(val, pow);
+
+    /*7:*/
+    function password() {
+            let password = document.getElementById("password").value;
+        console.log(password.lastIndexOf("z"));
+        if (password.length >= 3 && password.length <= 12) {
+            if (password.includes('&') || password.includes('$') || password.includes('%') || password.includes('*')) {
+                if (password.lastIndexOf("z") === password.length - 1 || password.indexOf("q") === 0) {
+                    alert("Корректный пароль")
+                } else {
+                    alert("Некорректный пароль")
+                }
+            } else {
+                alert("Некорректный пароль")
+            }
+        } else {
+            alert("Некорректный пароль")
+        }
+
+    }
+
+    /*Практическое задание 3*/
+    /*1:*/
+    console.log('Практическое задание 3');
+    console.log('№1')
+    let a = [
+        [{name: "Mary", age: 23}, {name: "Mary", age: 23}, {name: "Mary", age: 23}],
+        [{name: "Adam", age: 23}, {name: "Adam", age: 23}, {name: "Adam", age: 23}],
+        [{name: "Karl", age: 23}, {name: "Karl", age: 23}, {name: "Karl", age: 23}]
+    ];
+    for (let i in a) {
+        let b = a[i];
+        console.log(b)
+    }
+    /*2:*/
+    let product = [
+        {name: "Sneakers Nike", price: 1600, size: 38},
+        {name: "Sneakers Adidas", price: 1600, size: 38},
+        {name: "Sneakers Reebok", price: 1600, size: 38},
+        {name: "Sneakers Puma", price: 1600, size: 38},
+        {name: "Sneakers New Balance", price: 1600, size: 38}
+    ];
+
+    function countBasketPrice(product) {
+        let sum = 0;
+        console.log('№2');
+        for (let i in product) {
+            sum += product[i].price
+        }
+        console.log("Стоимость покупки: " + sum)
+    }
+
+    countBasketPrice(product);
+    /*3:*/
+    console.log('№3');
+    for (let i = 0; i < 10; console.log(i++)) ;
+    /*4:*/
+    console.log('№4');
+    let x = '*';
+    for (let i = 0; i <= 20; i++) {
+        console.log(x);
+        x = x + '*'
+    }
+    /*Практическое задание 4*/
+    console.log('Практическое задание 4');
+    /*1:*/
+    console.log('№1');
+
+    function numberToObj(num) {
+        let obj = {};
+        if (num < 1 || num > 999) {
+            console.log("Превышающее значение" + obj)
+        } else {
+            obj["единицы"] = num % 10;
+            obj["десятки"] = (num - obj["единицы"]) % 100 / 10;
+            obj["сотни"] = (num - obj["единицы"] - obj["десятки"] * 10) % 1000 / 100;
+        }
+        console.log(obj)
+    }
+
+    numberToObj(420);
+    /*2:*/
+    console.log('№2');
+    let Basket = {
+        goodList: [],
+        //общая стоимость товаров в корзине
+        countTotalPrice: function () {
+            let sum = 0;
+            for (let i in this.goodList) {
+                sum += this.goodList[i].price
+            }
+            return sum;
+        },
+        //кол-во товаров в корзине
+        countTotalNumber: function () {
+            return this.goodList.length
+        },
+        //заполненить корзину
+        putProduct: function (product) {
+            for (let i in product) {
+                if (i % 2 === 0) {
+                    product[i].count = 2
+                } else {
+                    product[i].count = 1;
+                }
+                this.goodList.push(product[i]);
+            }
+        },
+        generation: function () {
+            if (this.goodList.countTotalNumber == 0) {
+                console.log("Корзина пуста")
+            } else {
+                console.log("Корзина не пуста")
+            }
+        },
+        checkTotal: function () {
+            if (this.goodList.countTotalNumber != 0) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        },
+    };
+    Basket.putProduct(product);
+    console.log("Общая стоимоcть корзины: " + Basket.countTotalPrice());
+    console.log("Товаров в корзине: " + Basket.countTotalNumber());
+    Basket.generation();
+    /*Практическое задание 5*/
+    /*1:*/
+    function chessboard1() {
+        let newTable = document.createElement('table'),
+            lets = ['', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', ''],
+            blackFigs1 = ['8', '&#9820;', '&#9822;', '&#9821;', '&#9819;', '&#9818;', '&#9821;', '&#9822;', '&#9820;', '8'],
+            whiteFigs1 = ['1', '&#9814;', '&#9816;', '&#9815;', '&#9813;', '&#9812;', '&#9815;', '&#9816;', '&#9814;', '1'],
+            blackFigs2 = ['7', '&#9823;', '&#9823;', '&#9823;', '&#9823;', '&#9823;', '&#9823;', '&#9823;', '&#9823;', '7'],
+            whiteFigs2 = ['2', '&#9817;', '&#9817;', '&#9817;', '&#9817;', '&#9817;', '&#9817;', '&#9817;', '&#9817;', '2'];
+        for (let i = 0, a = 9; i < 10, a >= 0; i++, a--) {
+            let newTr = newTable.insertRow(i);
+            for (let j = 0; j < 10; j++) {
+                let newTd = newTr.insertCell(j);
+                switch (i) {
+                    case 0:
+                        newTd.innerText = lets[j];
+                        break;
+                    case 1:
+                        newTd.innerHTML = blackFigs1[j];
+                        break;
+                    case 2:
+                        newTd.innerHTML = blackFigs2[j];
+                        break;
+                    case 7:
+                        newTd.innerHTML = whiteFigs2[j];
+                        break;
+                    case 8:
+                        newTd.innerHTML = whiteFigs1[j];
+                        break;
+                    case 9:
+                        newTd.innerText = lets[j];
+                        break;
+                    default:
+                        if (j === 0 || j === 9) {
+                            newTd.innerHTML = a;
+                        }
+                        break;
+                }
+            }
+        }
+        document.body.appendChild(newTable);
+    }
+    chessboard1();
+    /*2:*/
+    function BasketCountTotal_Print() {
+        var div_basket = document.getElementById('basket');
+        var p = document.createElement('p');
+        if (Basket.checkTotal()) {
+            p.innerHTML = "Товаров в корзине: " + Basket.countTotalNumber() + " на сумму " + Basket.countTotalPrice() + " рублей";
+        }
+        else {
+            p.innerHTML = Basket.generation();
+        }
+        div_basket.appendChild(p);
+    }
+
+    function my_initiation() {
+        BasketCountTotal_Print();
+    }
+
+    window.onload = my_initiation;
+</script>
+<div class="wrap-column">
+    <h3>Практическое задание №2</h3>
+    <h3>Задание 7</h3>
+    <label>Ввеедите пароль:<input type="text" id="password"></label>
+    <input type="button" value="Проверка пароля" onclick="password()">
+</div>
+<div class="wrap-column">
+    <h3>Практическое задание №5</h3>
+    <h3>Задание 2</h3>
+    <div id="basket"></div>
+</div>
+
+
+<style>
+    table {
+        font-family: Impact, sans-serif;
+        font-size: 30px;
+        background-color: white;
+        color: black;
+    }
+
+    td {
+        height: 50px;
+        width: 50px;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    tr:nth-child(even) td:nth-child(odd) {
+        background-color: brown;
+    }
+
+    tr:nth-child(odd) td:nth-child(even) {
+        background-color: brown;
+    }
+
+    tr:last-child td:nth-child(odd),
+    tr:first-child td:nth-child(even) {
+        background-color: white;
+    }
+
+    tr:nth-child(even) td:first-child {
+        background-color: white;
+    }
+
+    tr:nth-child(odd) td:last-child {
+        background-color: white;
+    }
+
+    .wrap-row {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-around;
+    }
+
+    .wrap-column {
+        display: flex;
+        flex-direction: column;
+        width: 200px;
+    }
+</style>
+</body>
